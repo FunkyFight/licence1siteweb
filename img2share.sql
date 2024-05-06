@@ -73,7 +73,7 @@ INSERT INTO `follows` (`followID`, `followerID`, `followedID`, `date`) VALUES
 --
 
 CREATE TABLE `posts` (
-  `postID` int NOT NULL,
+  `postID` int NOT NULL AUTO_INCREMENT,
   `authorID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,

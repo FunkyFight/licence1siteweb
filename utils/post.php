@@ -123,6 +123,10 @@ class Post {
             echo '<img src="data:image/jpeg;base64,' . base64_encode($this->images[0]) . '" alt="Post Image" class="post-image">';
         }
         
+        if(count($this->images) - 1 > 0) {
+            echo '<p>+ '.(count($this->images) - 1).' image'.(count($this->images) - 1 > 1 ? "s" : "");
+        }
+
         echo "<br><a href='view.php?id=$this->postID' class='show-post-button'>View more</a>";
         echo '<div class="post-footer">';
         echo '<p class="likes">' . $this->likes . ' <a href="?action=like&postID='.$this->getPostID().'"><img src="./public/like.svg" style="width:50px;vertical-align:middle;"></a> · ' . $this->dislikes . ' <a href="?action=dislike&postID='.$this->getPostID().'"><img src="./public/dislike.svg" style="width:40px;vertical-align:middle;"></a></p>';
