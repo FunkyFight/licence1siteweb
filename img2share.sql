@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 06 mai 2024 à 10:59
--- Version du serveur : 8.0.30
--- Version de PHP : 8.1.10
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 06 mai 2024 à 13:42
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appreciation` (
-  `appreciationID` int NOT NULL,
-  `postID` int NOT NULL,
-  `userID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `appreciationID` int(11) NOT NULL,
+  `postID` int(11) NOT NULL,
+  `userID` varchar(20) NOT NULL,
   `action` tinyint(1) NOT NULL COMMENT 'like ou dislike'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,9 +49,9 @@ INSERT INTO `appreciation` (`appreciationID`, `postID`, `userID`, `action`) VALU
 --
 
 CREATE TABLE `follows` (
-  `followID` int NOT NULL,
-  `followerID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `followedID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `followID` int(11) NOT NULL,
+  `followerID` varchar(20) NOT NULL,
+  `followedID` varchar(20) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -73,11 +73,11 @@ INSERT INTO `follows` (`followID`, `followerID`, `followedID`, `date`) VALUES
 --
 
 CREATE TABLE `posts` (
-  `postID` int NOT NULL AUTO_INCREMENT,
-  `authorID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `tags` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `postID` int(11) NOT NULL,
+  `authorID` varchar(20) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` text DEFAULT NULL,
+  `tags` varchar(100) DEFAULT NULL,
   `creationDate` date NOT NULL,
   `isNSFW` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -100,11 +100,11 @@ INSERT INTO `posts` (`postID`, `authorID`, `title`, `description`, `tags`, `crea
 --
 
 CREATE TABLE `postscontent` (
-  `contentID` int NOT NULL,
-  `postID` int NOT NULL,
+  `contentID` int(11) NOT NULL,
+  `postID` int(11) NOT NULL,
   `type` enum('image') NOT NULL,
   `image` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `postscontent`
@@ -132,13 +132,13 @@ INSERT INTO `postscontent` (`contentID`, `postID`, `type`, `image`) VALUES
 --
 
 CREATE TABLE `user` (
-  `handle` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tags_interest` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `biography` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `role` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'un bool modo ou pas',
-  `profilePicture` longblob
+  `handle` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` text NOT NULL,
+  `tags_interest` varchar(100) DEFAULT NULL,
+  `biography` tinytext DEFAULT NULL,
+  `role` varchar(10) NOT NULL COMMENT 'un bool modo ou pas',
+  `profilePicture` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -185,6 +185,34 @@ ALTER TABLE `posts`
 ALTER TABLE `postscontent`
   ADD PRIMARY KEY (`contentID`),
   ADD KEY `postID` (`postID`) USING BTREE;
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `appreciation`
+--
+ALTER TABLE `appreciation`
+  MODIFY `appreciationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT pour la table `follows`
+--
+ALTER TABLE `follows`
+  MODIFY `followID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT pour la table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `postscontent`
+--
+ALTER TABLE `postscontent`
+  MODIFY `contentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
