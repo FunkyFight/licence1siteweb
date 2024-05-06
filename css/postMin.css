@@ -1,0 +1,58 @@
+ /* post */
+  
+ .post{
+    background-color: grey;
+    border-radius: 25px;
+    margin-top: 180px;
+    padding: 20px 10px;
+    width:90%;
+    display: inline-block;
+    opacity: 0.87;
+  }
+  .post-header{
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+  }
+  .post-footer{
+    margin: 20px 0px;
+    text-align: center;
+  }
+  .post-title{
+  
+    font-family:Helvetica;
+    font-size: 50px;
+  }
+  .post-image{
+    object-fit: contain;
+  }
+  .post-content{
+    text-align: center;
+  }
+  .username{
+    position: static;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .user-profile-picture{
+    border-radius: 50%;
+    width: 85%;
+    height: 85%;
+  }
+  .likes{
+    font-size: 20px;
+    position: relative;
+    background-color: transparent;
+    color: #fff;
+    margin: 10px 10px;
+  }
+  .dislikes{
+    position: relative;
+    background-color: transparent;
+    color: #fff;
+    margin: 10px 10px;
+    font-size: 20px;
+  }

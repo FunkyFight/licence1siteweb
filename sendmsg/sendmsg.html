@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Img2Share - Envois de messages</title>
+<meta charset="utf-8">
+<link href="sendmsg.css" rel="stylesheet" media="all">
+</head>
+<body>
+<header>
+
+<div class="navbar">
+  <h2> Img2Share </h2>
+  <ul>
+    <li><a href="../profile/profile.html"><button type="button" > <span></span>Profile</button> </a></li>
+    <li><a href="../explore/explore.html"><button type="button" ><span></span>Explorer</button></a></li>
+    <li><a href="../receivemsg/receivemsg.html"><button type="button" ><span></span>Inbox</button></a></li>
+    <li><a href="../login/login.html"><button type="button"><span></span>Connexion</button></a></li>
+  </ul>
+</div>
+</header>
+<h1> Img2Share </h1>
+<form method="POST">
+<label>Receveur:</label>
+<input type="text" id="nom" name="receveur" minlength="2" maxlength="20" required>
+<br><br>
+<textarea placeholder="Message" name="message"></textarea>
+<br><br>
+<input id="envoyer" type="submit" value="Envoyer" name="envoi">
+<br><br>
+</form>²
+<br>
+</body>
+</html>
